@@ -4,8 +4,7 @@ import SchoolForm from './components/SchoolForm';
 import Filters from './components/Filters';
 import {type School, type SchoolFormData, type SchoolFilters, SchoolTypeEnum } from './types';
 import styles from './App.module.css';
-
-const API_BASE_URL = 'http://localhost:8080'; // Або ваш URL
+import {schoolService} from "./schoolService.ts";
 
 const App: React.FC = () => {
     const [schools, setSchools] = useState<School[]>([]);
@@ -29,11 +28,7 @@ const App: React.FC = () => {
         if (filters.isActive !== '') queryParams.append('active', filters.isActive);
 
         try {
-            const response = await fetch(`${API_BASE_URL}/schools?${queryParams.toString()}`);
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data: School[] = await response.json();
+            const data: School[] = await schoolService.getSchools(filters);
             setSchools(data);
         } catch (e: any) {
             setError(e.message || 'Unknown error occurred');
@@ -51,19 +46,9 @@ const App: React.FC = () => {
         setIsLoading(true);
         setError(null);
         try {
-            const response = await fetch(`${API_BASE_URL}/schools`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(schoolData),
-            });
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => ({ message: `HTTP error! status: ${response.status}` }));
-                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
-            }
+            await schoolService.createSchool(schoolData);
             setShowCreateForm(false);
-            fetchSchools(); // Re-fetch to update the list
+            fetchSchools();
         } catch (e: any) {
             setError(e.message || 'Failed to create school');
         } finally {
@@ -76,13 +61,8 @@ const App: React.FC = () => {
             setIsLoading(true);
             setError(null);
             try {
-                const response = await fetch(`${API_BASE_URL}/schools/${id}/deactivate`, {
-                    method: 'PATCH',
-                });
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                fetchSchools(); // Re-fetch to update the list
+                await schoolService.deactivateSchool(id);
+                fetchSchools();
             } catch (e: any) {
                 setError(e.message || 'Failed to deactivate school');
             } finally {
@@ -99,7 +79,7 @@ const App: React.FC = () => {
     };
 
     return (
-        <div className="appContainer"> {/* Використання стилю */}
+        <div className="appContainer">
             <h1 className="appTitle">Реєстр шкільних закладів</h1>
 
             <button onClick={() => setShowCreateForm(!showCreateForm)} className={styles.toggleFormButton}>

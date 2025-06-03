@@ -9,7 +9,7 @@ interface SchoolTableProps {
 
 const SchoolTable: React.FC<SchoolTableProps> = ({schools, onDeactivate}) => {
     return (
-        <table className={styles.schoolTable}> {/* Apply .schoolTable */}
+        <table className={styles.schoolTable}>
             <thead>
             <tr>
                 <th>ID</th>
@@ -30,11 +30,11 @@ const SchoolTable: React.FC<SchoolTableProps> = ({schools, onDeactivate}) => {
                     <td>{school.region}</td>
                     <td>{school.type}</td>
                     <td>{school.is_active ? 'Так' : 'Ні'}</td>
-                    <td className={styles.actionsCell}> {/* Apply .actionsCell */}
+                    <td className={styles.actionsCell}>
                         {school.is_active && (
                             <button
                                 onClick={() => onDeactivate(school.id)}
-                                className={styles.deactivateButton} /* Apply .deactivateButton */
+                                className={styles.deactivateButton}
                             >
                                 Деактивувати
                             </button>

@@ -32,7 +32,6 @@ const SchoolForm: React.FC<SchoolFormProps> = ({ onCreate, onCancel, schoolTypes
             return;
         }
         await onCreate(formData);
-        // Не очищуємо форму тут, App це зробить через re-fetch або можна додати успішне повідомлення
     };
 
     return (
@@ -88,8 +87,6 @@ const SchoolForm: React.FC<SchoolFormProps> = ({ onCreate, onCancel, schoolTypes
                     disabled={isLoading}
                     className={styles.formSelect}
                 >
-                    {/* Add a default/placeholder option if necessary */}
-                    {/* <option value="">Оберіть тип</option> */}
                     {schoolTypes.map(type => (
                         <option key={type} value={type}>{type}</option>
                     ))}

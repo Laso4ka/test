@@ -13,7 +13,6 @@ const Filters: React.FC<FiltersProps> = ({ filters, onFilterChange, schoolTypes 
         onFilterChange(e.target.name as keyof SchoolFilters, e.target.value as SchoolTypeEnum | string);
     };
 
-
     return (
         <div className={styles.filtersContainer}>
             <h3 className={styles.filtersTitle}>Фільтри</h3>
