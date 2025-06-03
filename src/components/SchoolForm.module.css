@@ -1,0 +1,74 @@
+.schoolForm {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.formTitle {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.formLabel {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formInput,
+.formSelect {
+    width: calc(100% - 22px); /* Враховує padding та border */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Важливо для розрахунку width */
+}
+
+.formInput:focus,
+.formSelect:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.formButtons {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.submitButton {
+    background-color: #28a745;
+    color: white;
+}
+
+.submitButton:hover {
+    background-color: #218838;
+}
+
+.submitButton:disabled {
+    background-color: #79c48d;
+    cursor: not-allowed;
+}
+
+.cancelButton {
+    background-color: #6c757d;
+    color: white;
+    margin-left: 10px;
+}
+
+.cancelButton:hover {
+    background-color: #5a6268;
+}
+
+.cancelButton:disabled {
+    background-color: #adb5bd;
+    cursor: not-allowed;
+}
