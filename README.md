@@ -1,54 +1,46 @@
-# React + TypeScript + Vite
+# School Registry Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React application for managing a registry of school institutions. It allows users to view, create, filter, and deactivate school entries.
 
-Currently, two official plugins are available:
+## Prerequisites for Windows
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Before you begin, ensure you have the following installed on your Windows PC:
 
-## Expanding the ESLint configuration
+1.  **Node.js and npm:**
+    *   **Recommended:** Install Node.js using **NVM for Windows (Node Version Manager)**. This allows you to easily switch between Node.js versions.
+        *   Go to the [NVM for Windows releases page](https://github.com/coreybutler/nvm-windows/releases).
+        *   Download the `nvm-setup.zip` from the latest release.
+        *   Extract and run the installer.
+        *   Open a new Command Prompt or PowerShell window (might need pc restart)
+        *   Install a Long-Term Support version of Node.js
+            ```bash
+            nvm install 'version'
+            nvm use 'version'
+            ```
+            change version to your selection
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2.  **Install Project Dependencies:**
+    *   Once inside the root directory (one with package.json inside), install all the necessary npm packages:
+        ```bash
+        npm install
+        ```
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+3.  **Configure Environment Variables (`.env` file):**
+    *   Add the following line to the `.env` file, replacing `http://localhost:3000/api` with the actual base URL of your backend API.
+        ```env
+        # .env
+        API_URL=http://localhost:3000/api
+        ```
+## Running the Application (Development Mode)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1.  **Start the Development Server:**
+    *   In your Command Prompt or PowerShell, while in the project directory (`school-registry-app`), run:
+        ```bash
+        npm run dev
+        ```
+        This command starts the Vite development server.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+2.  **Open in Browser:**
+    *   Once the server is running, it will typically output a local URL (e.g., `http://localhost:5173/` or similar).
+    *   Open your web browser (Chrome, Firefox, Edge) and navigate to this URL.
+    *   You should see the School Registry application running. The application will automatically reload if you make changes to the source code.
