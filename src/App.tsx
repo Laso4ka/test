@@ -2,9 +2,12 @@ import React, { useState, useEffect, useCallback } from 'react';
 import SchoolTable from './components/SchoolTable';
 import SchoolForm from './components/SchoolForm';
 import Filters from './components/Filters';
-import {type School, type SchoolFormData, type SchoolFilters, SchoolTypeEnum } from './types';
+import {SchoolType } from './shared/enums/SchoolType.ts';
 import styles from './App.module.css';
-import {schoolService} from "./schoolService.ts";
+import {schoolService} from "./shared/services/schoolService.ts";
+import type {SchoolFormData} from "./shared/types/schoolFormData.ts";
+import type {School} from "./shared/types/school.ts";
+import type {SchoolFilters} from "./shared/types/schoolFilters.ts";
 
 const App: React.FC = () => {
     const [schools, setSchools] = useState<School[]>([]);
@@ -17,7 +20,7 @@ const App: React.FC = () => {
         isActive: ''
     });
 
-    const schoolTypeOptions = Object.values(SchoolTypeEnum);
+    const schoolTypeOptions = Object.values(SchoolType);
 
     const fetchSchools = useCallback(async () => {
         setIsLoading(true);
@@ -71,7 +74,7 @@ const App: React.FC = () => {
         }
     };
 
-    const handleFilterChange = (filterName: keyof SchoolFilters, value: string | SchoolTypeEnum) => {
+    const handleFilterChange = (filterName: keyof SchoolFilters, value: string | SchoolType) => {
         setFilters(prevFilters => ({
             ...prevFilters,
             [filterName]: value

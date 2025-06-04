@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import {type SchoolFormData, SchoolTypeEnum } from '../types';
+import {SchoolType } from '../shared/enums/SchoolType.ts';
 import styles from './SchoolForm.module.css'
+import type {SchoolFormData} from "../shared/types/schoolFormData.ts";
 
 interface SchoolFormProps {
     onCreate: (schoolData: SchoolFormData) => Promise<void>;
     onCancel: () => void;
-    schoolTypes: SchoolTypeEnum[];
+    schoolTypes: SchoolType[];
     isLoading?: boolean;
 }
 
@@ -14,7 +15,7 @@ const SchoolForm: React.FC<SchoolFormProps> = ({ onCreate, onCancel, schoolTypes
         name: '',
         edrpou: '',
         region: '',
-        type: schoolTypes[0] || SchoolTypeEnum.ZZSO, // Default type
+        type: schoolTypes[0] || SchoolType.ZZSO,
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {

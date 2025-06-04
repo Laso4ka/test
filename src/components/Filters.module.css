@@ -1,35 +1,44 @@
 .filtersContainer {
-    border: 1px solid #ccc;
-    padding: 15px;
+    --color-bg-filters: #f9f9f9;
+    --color-text-label: #444;
+
+    border: 1px solid var(--color-border-lighter, #e0e0e0);
+    padding: 20px;
     margin-top: 20px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    margin-bottom: 25px;
+    border-radius: 6px;
+    background-color: var(--color-bg-filters);
 }
 
 .filtersTitle {
-    margin-bottom: 15px;
-    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--color-text-base, #333);
     text-align: left;
 }
 
 .filterGroup {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .filterLabel {
-    min-width: 80px;
-    font-weight: normal;
+    min-width: 90px;
+    font-weight: 500;
+    color: var(--color-text-label);
+    flex-shrink: 0;
 }
 
 .filterInput,
 .filterSelect {
-    padding: 8px;
-    border: 1px solid #ccc;
+    padding: 9px 10px;
+    border: 1px solid var(--color-border-base, #ccc);
     border-radius: 4px;
     flex-grow: 1;
     box-sizing: border-box;
+    font-size: 0.95rem;
 }

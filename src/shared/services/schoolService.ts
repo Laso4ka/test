@@ -1,6 +1,8 @@
-import { type School, type SchoolFormData, type SchoolFilters } from './types';
+import type {SchoolFormData} from "../types/schoolFormData.ts";
+import type {School} from "../types/school.ts";
+import type {SchoolFilters} from "../types/schoolFilters.ts";
 
-const API_BASE_URL = 'http://localhost:8080';
+const API_BASE_URL = import.meta.env.API_URL;
 
 const getErrorMessage = async (response: Response, defaultMessage: string): Promise<string> => {
     try {

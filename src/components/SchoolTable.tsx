@@ -1,6 +1,6 @@
 import React from 'react';
-import type {School} from '../types';
 import styles from './SchoolForm.module.css'
+import type {School} from "../shared/types/school.ts";
 
 interface SchoolTableProps {
     schools: School[];

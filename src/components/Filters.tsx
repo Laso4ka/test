@@ -1,16 +1,17 @@
 import React from 'react';
-import {type SchoolFilters, SchoolTypeEnum } from '../types';
+import {SchoolType } from '../shared/enums/SchoolType.ts';
 import styles from './Filters.module.css';
+import type {SchoolFilters} from "../shared/types/schoolFilters.ts";
 
 interface FiltersProps {
     filters: SchoolFilters;
-    onFilterChange: (filterName: keyof SchoolFilters, value: string | SchoolTypeEnum) => void;
-    schoolTypes: SchoolTypeEnum[];
+    onFilterChange: (filterName: keyof SchoolFilters, value: string | SchoolType) => void;
+    schoolTypes: SchoolType[];
 }
 
 const Filters: React.FC<FiltersProps> = ({ filters, onFilterChange, schoolTypes }) => {
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        onFilterChange(e.target.name as keyof SchoolFilters, e.target.value as SchoolTypeEnum | string);
+        onFilterChange(e.target.name as keyof SchoolFilters, e.target.value as SchoolType | string);
     };
 
     return (
